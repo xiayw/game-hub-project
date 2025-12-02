@@ -1,4 +1,4 @@
-import React from 'react'
+
 import type { Platform } from '../hooks/useGames'
 interface Props{
     platforms: Platform[]

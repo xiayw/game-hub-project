@@ -1,31 +1,23 @@
 import { useEffect, useState } from 'react'
 import apiClient, { CanceledError } from '../service/api-client';
-export interface Platform {
-    credit: number
-}
-export interface Game {
-    id: number,
-    name: string,
-    background_image:string,
-    parent_platforms: {platforms: Platform} [],
-    metacritic: number;
-}
 
-interface FetchGamesResponse {
+
+
+interface FetchResponse<T>{
     count: number,
-    results: Game[],
+    results: T[],
 }
 
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
+const useData = <T>(endpoint: string) => {
+  const [data, setData] = useState<T[]>([]);
   const [error, setError] =useState('');
   const [isLoading, setLoading] = useState(false);
   useEffect(() =>{
     const controller = new AbortController();
     setLoading(true);
-    apiClient.get<FetchGamesResponse>('/games', {signal: controller.signal})
+    apiClient.get<FetchResponse<T>>(endpoint, {signal: controller.signal})
     .then(({data}) => {
-      setGames(data.results);
+      setData(data.results);
       setLoading(false);
     } )
     .catch((err)=> {
@@ -37,7 +29,7 @@ const useGames = () => {
     return () => controller.abort();
   },[]);
 
-  return { games, error, isLoading};
+  return { data, error, isLoading};
 }
 
-export default useGames
+export default useData
