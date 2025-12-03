@@ -1,17 +1,17 @@
 import { HStack, Image, Text, Button } from "@chakra-ui/react";
 import logo from "../assets/react.svg";
-import { useColorMode } from "@/components/ui/color-mode";
+
+import ColorModeSwitch from "./ColorModeSwitch";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
-  const { toggleColorMode } = useColorMode();
-  return (
-    <HStack>
-      <Image src={logo}></Image>
-      <Text>NavBar</Text>
 
-      <Button size="sm" variant="subtle" onClick={toggleColorMode}>
-        Toggle Mode
-      </Button>
+  return (
+    <HStack  padding="10px">
+      <Image src={logo} boxSize="40px"></Image>
+      <SearchInput/>
+
+      <ColorModeSwitch />
     </HStack>
   );
 };
