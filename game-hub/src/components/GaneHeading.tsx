@@ -6,7 +6,7 @@ interface Props {
 const GaneHeading = ({ game }: Props) => {
   const heading = `${game.platform?.name || ""} ${game.genre?.name || ""}`;
   return (
-    <Heading marginY={5} fontSize="5xl">
+    <Heading marginY={5} fontSize="5xl" textAlign='left'>
     {heading}
     </Heading>
   );
