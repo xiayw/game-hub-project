@@ -3,23 +3,22 @@ import { Image, CardBody, CardRoot, Heading, HStack, Text } from '@chakra-ui/rea
 import CriticScore from './CriticScore'
 import getCroppedImageUrl from '../service/image-url'
 import PlatformIconList from './PlatformIconList'
+import Emoji from './Emoji'
 
 interface Props{
     game: Game,
 }
 const GameCard = ({game}: Props) => {
   return (
-    <CardRoot width='300px' borderRadius={10} overflow='hidden'>
+    <CardRoot >
         <Image src={getCroppedImageUrl(game.background_image)} />
-
         <CardBody>
-            <Heading fontSize='2xl' >{game.name}</Heading>
-            <HStack justifyContent={'space-between'}>
+            <HStack justifyContent={'space-between'} marginBottom={3}>
 
             <PlatformIconList platforms={game.parent_platforms.map(({platform})=> platform)} />
             <CriticScore score={game.metacritic} />
             </HStack>
-
+            <Heading fontSize='2xl' >{game.name}<Emoji rating={game.rating_top}/></Heading>
         </CardBody>
     </CardRoot>
   )
