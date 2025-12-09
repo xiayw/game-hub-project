@@ -1,18 +1,16 @@
-import { Grid, GridItem, Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
 
+import { useState } from "react";
 import "./App.css";
 import GameGrid from "./components/GameGrid";
-import GenreList from "./components/GenreList";
-import { useState } from "react";
-import type { Genre } from "./hooks/useGenres";
-import type { Platform } from "./hooks/usePlatforms";
-import PlatformSelector from "./components/PlatformSelector";
-import NavBar from "./components/NavBar";
-import SortSelector from "./components/SortSelector";
 import GaneHeading from "./components/GaneHeading";
+import GenreList from "./components/GenreList";
+import NavBar from "./components/NavBar";
+import PlatformSelector from "./components/PlatformSelector";
+import SortSelector from "./components/SortSelector";
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  genreId?: number;
+  platformId?: number;
   sortOrder: string,
   searchText: string
 }
@@ -36,22 +34,22 @@ function App() {
       <Box hideBelow="lg">
         <GridItem area="aside" paddingX={5}>
           <GenreList
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
-            selectedGenre={gameQuery.genre}
+            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id})}
+            selectedGenreId={gameQuery.genreId}
           />
         </GridItem>
       </Box>
 
       <GridItem area="main">
         <Box paddingLeft={2} >
-          <GaneHeading game={gameQuery} />
+          <GaneHeading gameQuery={gameQuery} />
           
           <Flex  marginBottom={5}>
             <Box marginRight={5}>
               <PlatformSelector
-                selectedPlatform={gameQuery.platform}
+                selectedPlatformId={gameQuery.platformId}
                 onSelectPlatform={(platform) =>
-                  setGameQuery({ ...gameQuery, platform })
+                  setGameQuery({ ...gameQuery, platformId: platform.id })
                 }
               />
             </Box>
