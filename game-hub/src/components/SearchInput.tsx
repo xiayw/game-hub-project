@@ -1,7 +1,11 @@
 import { Input, Kbd, InputGroup } from '@chakra-ui/react'
 import { LuSearch } from "react-icons/lu"
 
-const SearchInput = () => {
+interface Props {
+  onSearch: (searchText: string) => void,
+
+}
+const SearchInput = ({onSearch}: Props) => {
   return (
     <form onSubmit={(event) =>{ 
         event.preventDefault();
