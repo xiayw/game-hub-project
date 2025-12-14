@@ -7,7 +7,9 @@ import useGameQueryStore from '@/store';
 export interface Game {
     id: number,
     name: string,
+    slug: string,
     background_image:string,
+    description_raw: string,
     parent_platforms: {platform: Platform} [],
     metacritic: number;
     rating_top: number
@@ -48,4 +50,4 @@ const useGames = () =>{
     [genreId, platformId, sortOrder]    
     );*/
 
-export default useGames
+export default useGames;
