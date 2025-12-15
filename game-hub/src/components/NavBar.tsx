@@ -3,13 +3,16 @@ import logo from "../assets/react.svg";
 
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
+import { Link } from "react-router-dom";
 
 
 const NavBar = () => {
 
   return (
     <HStack  padding="10px">
-      <Image src={logo} boxSize="40px"></Image>
+      <Link to='/'>
+            <Image src={logo} boxSize="40px" objectFit='cover'></Image>
+      </Link>
       <SearchInput/>
       <ColorModeSwitch />
     </HStack>
