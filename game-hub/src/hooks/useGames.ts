@@ -3,7 +3,7 @@ import APIClinet, { type FetchResponse } from '@/services/api-client';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import ms from 'ms';
 import useGameQueryStore from '@/store';
-import type { Game } from '@/entities/Game';
+import type Game from '@/entities/Game';
 const apiClient = new APIClinet<Game>('/games');
 
 const useGames = () =>{

@@ -2,7 +2,7 @@ import platforms from "../data/platforms";
 import APIClinet from '../services/api-client';
 import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
-import type { Platform } from "../entities/Platform";
+import type Platform from "../entities/Platform";
 
 const apiClient = new APIClinet<Platform>('/platforms/lists/parents'); 
 
